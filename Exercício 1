@@ -1,0 +1,52 @@
+# f = (g + h) – (i + j)
+
+.data
+g:.asciiz "digite valor de g:  "
+h:.asciiz "digite valor de h:  "
+i:.asciiz "digite valor de i:  "
+j:.asciiz "digite valor de j:  "
+
+.text
+li $v0, 4
+la $a0, g
+syscall
+
+li $v0, 5
+syscall
+
+move $t0,$v0
+
+li $v0, 4
+la $a0, h
+syscall
+
+li $v0, 5
+syscall
+
+move $t1,$v0
+
+li $v0, 4
+la $a0, i
+syscall
+
+li $v0, 5
+syscall
+
+move $t2,$v0
+
+li $v0, 4
+la $a0, j
+syscall
+
+li $v0, 5
+syscall
+
+move $t3,$v0
+
+add $t4,$t1,$t0
+add $t5,$t2,$t3
+sub $t6,$t4,$t5
+
+li $v0 1
+move $a0, $t6
+syscall
