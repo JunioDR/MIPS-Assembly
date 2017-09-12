@@ -1,0 +1,39 @@
+#Teste de Igualdade
+
+.data
+V1:.asciiz "digite valor de V1:  "
+V2:.asciiz "digite valor de V2:  "
+diferentes:.asciiz "São diferentes"
+iguais:.asciiz "São iguais"
+
+.text
+li $v0, 4
+la $a0, V1
+syscall
+
+li $v0, 5
+syscall
+
+move $t0,$v0
+
+li $v0, 4
+la $a0, V2
+syscall
+
+li $v0, 5
+syscall
+
+move $t1,$v0
+
+beq $t0,$t1, ELSE
+
+li $v0, 4
+la $a0, diferentes
+syscall
+j exit
+
+ELSE:
+li $v0, 4
+la $a0, iguais
+syscall
+exit:
